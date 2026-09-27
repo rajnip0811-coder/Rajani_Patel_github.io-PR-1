@@ -1,146 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ABC College</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f4f7fb;
-        color: #333;
-    }
-    /* Header */
-    .header {
-        background-color: #123c69;
-        color: white;
-        text-align: center;
-        padding: 30px;
-    }
-    .header h1 {
-        margin: 0;
-        font-size: 36px;
-    }
-    .header p {
-        font-size: 18px;
-        color: #dbeafe;
-    }
-    /* Navigation */
-    .navbar {
-        background-color: #1d70a2;
-        text-align: center;
-        padding: 15px;
-    }
-    .navbar a {
-        color: white;
-        text-decoration: none;
-        margin: 0 15px;
-        font-weight: bold;
-    }
-
-    .navbar a:hover {
-        color: #ffd166;
-    }
-
-    /* Main Content */
-    .content {
-        width: 80%;
-        margin: 30px auto;
-    }
-
-    .box {
-        background-color: white;
-        padding: 25px;
-        margin-bottom: 25px;
-        border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-        color: #123c69;
-        border-left: 5px solid #1d70a2;
-        padding-left: 10px;
-    }
-
-    /* Lists */
-    ul, ol {
-        line-height: 2;
-    }
-
-    li {
-        color: #444;
-    }
-
-    /* Footer */
-    .footer {
-        background-color: #123c69;
-        color: white;
-        text-align: center;
-        padding: 20px;
-        margin-top: 30px;
-    }
+:root{
+  --bg:#fff9ec; --bg-soft:#fcefd2; --surface:#fffaf0; --ink:#161a2b; --ink-soft:#5c5f6e; --ink-faint:#9a9ca8;
+  --line:rgba(22,26,43,.09); --accent:#1f2b5e; --accent-2:#c9932e; --accent-tint:#eef0f9; --gold-tint:#fbf1dc;
+  --radius:20px; --shadow-sm:0 1px 3px rgba(0,0,0,.05); --shadow-md:0 12px 30px rgba(0,0,0,.09);
+  --ease:cubic-bezier(.16,.84,.44,1);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:linear-gradient(180deg,#fff9ec 0%,#fdf4de 45%,#fff9ec 100%);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.65;}
+h1,h2,h3{font-family:'Manrope','Inter',sans-serif;font-weight:800;letter-spacing:-.02em;color:var(--ink);}
+.wrap{max-width:980px;margin:0 auto;padding:0 26px;}
+a{color:inherit;}
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+.nav-inner{max-width:980px;margin:0 auto;padding:16px 26px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.brand{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.1rem;}
+.nav-links{display:flex;gap:4px;flex-wrap:wrap;}
+.nav-links a{text-decoration:none;font-size:.92rem;font-weight:600;color:var(--ink-soft);padding:8px 14px;border-radius:999px;transition:background .25s,color .25s;}
+.nav-links a:hover{background:var(--accent-tint);color:var(--accent);}
+header.hero{text-align:center;padding:74px 0 56px;background:linear-gradient(180deg,var(--accent-tint),transparent);}
+header.hero h1{font-size:clamp(2.1rem,4.6vw,3.1rem);margin-bottom:10px;}
+header.hero .tag{color:var(--ink-soft);font-size:1.12rem;margin-bottom:26px;}
+.hero-icon{width:92px;height:92px;margin:0 auto 22px;color:var(--accent);}
+.hero-icon svg{width:100%;height:100%;}
+section{padding:56px 0;}
+section h2{font-size:1.7rem;margin-bottom:22px;}
+.eyebrow{display:block;color:var(--accent);font-weight:700;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px;}
+p.lead{color:var(--ink-soft);max-width:680px;margin-bottom:8px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:18px;}
+.card{background:var(--accent-tint);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-sm);transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--accent);}
+.card:nth-child(even){background:var(--gold-tint);border-left-color:var(--accent-2);}
+.card:nth-child(even) .ic{background:#fff;color:var(--accent-2);}
+.card .ic{width:38px;height:38px;border-radius:11px;background:#fff;color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:var(--shadow-sm);}
+.card .ic svg{width:20px;height:20px;}
+.card h3{font-size:1.02rem;margin-bottom:4px;}
+.card p{color:var(--ink-soft);font-size:.92rem;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:18px;}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;text-align:center;box-shadow:var(--shadow-sm);}
+.stat .num{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.9rem;color:var(--accent);}
+.stat .lbl{color:var(--ink-soft);font-size:.82rem;margin-top:4px;}
+.table-wrap{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);margin-top:18px;}
+table{width:100%;border-collapse:collapse;}
+th,td{text-align:left;padding:14px 20px;font-size:.94rem;}
+thead th{background:var(--accent);color:#fff;font-family:'Manrope',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;}
+tbody tr{border-bottom:1px solid var(--line);}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:var(--accent-tint);}
+tbody td:first-child{font-weight:600;}
+ol.notice{list-style:none;margin-top:14px;}
+ol.notice li{position:relative;padding:14px 0 14px 38px;border-bottom:1px solid var(--line);color:var(--ink-soft);counter-increment:n;}
+ol.notice{counter-reset:n;}
+ol.notice li:last-child{border-bottom:none;}
+ol.notice li::before{content:counter(n);position:absolute;left:0;top:12px;width:22px;height:22px;border-radius:7px;background:var(--accent);color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.callout{background:var(--accent);color:#fff;border-radius:var(--radius);padding:26px 28px;margin-top:18px;}
+.callout h3{color:#fff;font-size:1.15rem;}
+.callout p{color:rgba(255,255,255,.88);margin-top:4px;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s;margin-top:8px;}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+footer{border-top:1px solid var(--line);background:var(--surface);text-align:center;padding:34px 0;color:var(--ink-soft);font-size:.9rem;}
+footer .brand{display:block;margin-bottom:6px;color:var(--ink);}
+@media(max-width:640px){ section{padding:40px 0;} header.hero{padding:56px 0 40px;} }
 </style>
-
 </head>
-
 <body>
-
-<!-- Header -->
-<div class="header">
+<nav><div class="nav-inner">
+  <span class="brand">ABC College</span>
+  <div class="nav-links"><a href="#home">Home</a><a href="#about">About</a><a href="#courses">Courses</a><a href="#admission">Admission</a><a href="#contact-us">Contact Us</a></div>
+</div></nav>
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5v5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5"/><path d="M22 8v6.5"/></svg></div>
     <h1>ABC College of Technology</h1>
-    <p>Knowledge | Innovation | Excellence</p>
-</div>
+    <p class="tag">Knowledge | Innovation | Excellence</p>
+  </div>
+</header>
+<section id="about"><div class="wrap"><span class="eyebrow">About us</span><h2>Welcome to ABC College</h2><p class="lead">ABC College of Technology is a leading institution providing quality education in Computer Science, Information Technology and Management. Since our founding, we have combined a rigorous academic curriculum with hands-on labs, industry projects and mentorship, preparing graduates who are ready to contribute from day one.</p></div></section>
 
-<!-- Navigation -->
-<div class="navbar">
-    <a href="#">Home</a>
-    <a href="#">About Us</a>
-    <a href="#">Courses</a>
-    <a href="#">Admission</a>
-    <a href="#">Contact Us</a>
-</div>
+<section id="why"><div class="wrap"><span class="eyebrow">Why choose us</span><h2>What sets ABC College apart</h2>
+<div class="grid">
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5v5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5"/></svg></div><h3>Industry-ready curriculum</h3><p>Courses built around what employers actually hire for.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.6 3.1-6.5 7-6.5s7 2.9 7 6.5"/></svg></div><h3>Experienced faculty</h3><p>Mentors from academia and industry guiding every cohort.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="12" rx="1.5"/><path d="M9 20h6M12 16v4"/></svg></div><h3>Modern labs</h3><p>Dedicated computing, networking and AI labs open daily.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v4a4 4 0 0 1-8 0V4Z"/><path d="M12 12v3"/><path d="M8.5 19.5h7"/></svg></div><h3>Strong placement record</h3><p>A campus track record students and recruiters trust.</p></div>
+</div></div></section>
 
-<!-- Main Content -->
-<div class="content">
+<section id="courses"><div class="wrap"><span class="eyebrow">Programs</span><h2>Our Courses</h2><p class="lead">Undergraduate and postgraduate programs in computing and management.</p><div class="grid">
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5v5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5"/><path d="M22 8v6.5"/></svg></div><h3>BCA</h3><p>A three-year foundation in programming, databases and software development.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5v5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5"/><path d="M22 8v6.5"/></svg></div><h3>MCA</h3><p>Advanced systems and engineering practice for postgraduate specialists.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5v5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5"/><path d="M22 8v6.5"/></svg></div><h3>B.Tech Computer Science</h3><p>A four-year engineering degree in algorithms, systems and software.</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5v5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5"/><path d="M22 8v6.5"/></svg></div><h3>M.Tech Computer Science</h3><p>Research-oriented specialization for advanced engineering roles.</p></div>
+</div></div></section>
 
-    <div class="box">
-        <h2>Welcome to ABC College</h2>
+<section id="highlights"><div class="wrap"><span class="eyebrow">Campus highlights</span><h2>ABC College by the numbers</h2>
+<div class="stat-grid">
+<div class="stat"><div class="num">1998</div><div class="lbl">Founded</div></div>
+<div class="stat"><div class="num">4,500+</div><div class="lbl">Students</div></div>
+<div class="stat"><div class="num">96%</div><div class="lbl">Placement rate</div></div>
+<div class="stat"><div class="num">120+</div><div class="lbl">Recruiting partners</div></div>
+</div></div></section>
 
-        <p>
-            ABC College of Technology is a leading institution providing
-            quality education in Computer Science, Information Technology
-            and Management.
-        </p>
-    </div>
+<section id="admission"><div class="wrap"><span class="eyebrow">Admission</span><h2>Join the 2026-27 batch</h2><p class="lead">Applications for BCA, MCA, B.Tech and M.Tech are open now. Seats are limited and allotted on a first-come basis after document verification.</p>
+<div class="callout"><h3>Ready to apply?</h3><p>Start your application today — our admissions team will guide you through the rest.</p><a href="#news" class="btn" style="background:#fff;color:var(--accent);">Apply for admission</a></div>
+</div></section>
 
-    <div class="box">
-        <h2>Our Courses</h2>
+<section id="news"><div class="wrap"><span class="eyebrow">Latest news</span><h2>What's happening on campus</h2><ol class="notice"><li>Admission open for 2026-27</li><li>Annual Technical Fest will be held in September</li><li>Registration open for Internship Program</li></ol></div></section>
 
-        <ul>
-            <li>Bachelor of Computer Applications (BCA)</li>
-            <li>Master of Computer Applications (MCA)</li>
-            <li>B.Tech Computer Science</li>
-            <li>M.Tech Computer Science</li>
-        </ul>
-    </div>
+<section id="contact-us"><div class="wrap"><span class="eyebrow">Contact</span><h2>Get in touch</h2>
+<div class="grid">
+<div class="card"><h3>Address</h3><p>ABC College of Technology, Sector 12, Jaipur, Rajasthan</p></div>
+<div class="card"><h3>Phone</h3><p>+91 98765 43210</p></div>
+<div class="card"><h3>Email</h3><p>admissions@abccollege.edu</p></div>
+</div></div></section>
 
-    <div class="box">
-        <h2>Latest News</h2>
-
-        <ol>
-            <li>Admission open for 2026-27</li>
-            <li>Annual Technical Fest will be held in September</li>
-            <li>Registration open for Internship Program</li>
-        </ol>
-    </div>
-
-</div>
-
-<!-- Footer -->
-<div class="footer">
-    <p>© Rajni Patel 2026 ABC College of Technology</p>
-</div>
-
-
+<footer><div class="wrap">
+  <span class="brand">ABC College</span>
+  <p>&copy; 2026 ABC College. All rights reserved.</p>
+</div></footer>
 </body>
-
 </html>
